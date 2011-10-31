@@ -20,9 +20,9 @@ DESCRIPTION:
             - : messg in Blowfish
             ! : messg not encripted
          - Messages can be sended using any mode with prefixes:
-            -p : not encripted
-            -aes : messg in AES256CBC
-            -bfs : messg in Blowfish 
+            +p : not encripted
+            +aes : messg in AES256CBC
+            +bfs : messg in Blowfish 
 
 COMMANDS:
     /key <nick|#channel> [<--network> <network>] [new_key] : show information or set key

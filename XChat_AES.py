@@ -28,7 +28,7 @@ __module_description__ = 'FiSH with Blowfish/AES encryption for XChat in pure py
 
 import pickle
 import os
-import base64
+import binascii
 import hashlib
 import struct
 
@@ -238,32 +238,29 @@ def blowcrypt_unpack(msg, cipher):
 
 def aes_cbc_pack(msg, cipher):
     """."""
-    padded = padto(msg, 16)
-    return '+AES *' + base64.b64encode(cipher.encrypt(padded))
-
+    #padded = padto(msg, 16)
+    b64_string = binascii.b2a_base64(cipher.encrypt(padto(msg, 16)))
+    b64_string += "=" * ((4 - len(b64_string) % 4) % 4)
+    return '+AES *' + b64_string
 
 def aes_cbc_unpack(msg, cipher):
     """."""
     if not msg.startswith('+AES *'):
         raise ValueError
-
     try:
         _, coded = msg.split('*', 1)
-        raw = base64.b64decode(coded)
+        coded += "=" * ((4 - len(coded) % 4) % 4)
+        raw = binascii.a2b_base64(coded)
     except TypeError:
-        print "b64decode(coded)"
         raise MalformedError
     if not raw:
-        print "b64decode(coded): not raw"
         raise MalformedError
 
     try:
         padded = cipher.decrypt(raw)
     except ValueError:
-        print "cipher.decrypt(raw)"
         raise MalformedError
     if not padded:
-        print "cipher.decrypt(raw): not padded"
         raise MalformedError
 
     plain = padded.strip("\x00")

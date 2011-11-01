@@ -22,7 +22,7 @@ DESCRIPTION:
          - Messages can be sended using any mode with prefixes:
             +p : not encripted
             +aes : messg in AES256CBC
-            +bfs : messg in Blowfish 
+            +bfs : messg in Blowfish
 
 COMMANDS:
     /key <nick|#channel> [<--network> <network>] [new_key] : show information or set key
@@ -31,5 +31,5 @@ COMMANDS:
     /key_load : load keys from internal file
     /key_pass <password> : set key file pass
     /key_remove <nick|#channel> : remove key
-    /aes #channel/nick [1|0] or [True|False] : set/unset AES256CBC mode (default standard Blowfish FiSH mode)
+    /aes #channel/nick [1|0] or [True|False] : set/unset AES256CBC mode (default AES mode)
 

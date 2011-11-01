@@ -241,14 +241,17 @@ def aes_cbc_pack(msg, cipher):
     #padded = padto(msg, 16)
     b64_string = binascii.b2a_base64(cipher.encrypt(padto(msg, 16)))
     b64_string += "=" * ((4 - len(b64_string) % 4) % 4)
-    return '+AES *' + b64_string
+    #return '+AES *' + b64_string
+    return '+AES  ' + b64_string
 
 def aes_cbc_unpack(msg, cipher):
     """."""
-    if not msg.startswith('+AES *'):
+    #if not msg.startswith('+AES *'):
+    if not msg.startswith('+AES '):
         raise ValueError
     try:
-        _, coded = msg.split('*', 1)
+        #_, coded = msg.split('*', 1)
+        _, coded = msg.split(' ', 1)
         coded += "=" * ((4 - len(coded) % 4) % 4)
         raw = binascii.a2b_base64(coded)
     except TypeError:
@@ -651,7 +654,7 @@ def key(word, word_eol, userdata):
             key.key = word_eol[4]
         KEY_MAP[id_] = key
         KEY_MAP[id_].hashKey=sha256(key.key)
-        print 'Key for', id_, 'set to', key.key
+        print 'Key for', id_, 'set to', key.key, "( AES =",key.aes,")"
         return xchat.EAT_ALL
 
 def key_exchange(word, word_eol, userdata):

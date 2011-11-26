@@ -1,88 +1,850 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
 
-  <title>emigonza/XChat-FiSH-AES @ GitHub</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  		<head>
+				<title></title>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<meta http-equiv="cache-control" content="" />
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #11617b;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #ee9e84; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #ee9e84; }
-    h3 { text-align: center; color: #ee9e84; }
-    a { color: #ee9e84; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+<style type="text/css">
+/* ######### Drop Down ULs CSS ######### */
+.menu .ddsubmenustyle, .menu .ddsubmenustyle ul{ /*topmost and sub ULs, respectively*/
+font: normal 13px Verdana;
+margin: 0 0 10px 0px;  
+padding: 0;  
+position: absolute;
+left: 0;
+top: 0;
+     list-style-type: none;
+background: white;
+visibility: hidden;
+            z-index: 1000000;
 
-<body>
-  <a href="https://github.com/emigonza/XChat-FiSH-AES"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+background:#474640;
+           border-top: 0;
+padding:5px 0px 5px 0px;
+                  }
+.menu .ddsubmenustyle li {
+        background:none;
+                    padding:0px;
+                                margin:0px;
+}
 
-  <div id="container">
+.menu .ddsubmenustyle li a{
+    list-style-type: none; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+display: block;
+width: 160px;
+color: #FFFFFF;
+padding: 5px 0px 5px 10px;
+         text-decoration:underline;
+         line-height:15px;
+         font-weight:bold;
+}
 
-    <div class="download">
-      <a href="https://github.com/emigonza/XChat-FiSH-AES/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/emigonza/XChat-FiSH-AES/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+* html .menu .ddsubmenustyle li a{ /*IE6 CSS hack*/
+display: inline-block;
+}
+
+.menu .ddsubmenustyle li a:hover{
+color: #474640;
+       text-decoration:none;
+       background-color:#ffb800;
+}
+
+/* ######### Neutral CSS  ######### */
+
+.downarrowpointer{ /*CSS for "down" arrow image added to top menu items*/
+    padding-left: 4px;
+border: 0;
+}
+
+.rightarrowpointer{ /*CSS for "right" arrow image added to drop down menu items*/
+position: absolute;
+          padding-top: 3px;
+left: 100px;
+border: 0;
+}
+
+.ddiframeshim{
+position: absolute;
+          z-index: 50000;
+background: transparent;
+            border-width: 0;
+width: 0;
+height: 0;
+display: block;
+}
+
+/* ######### Matt Black Strip Main Menu Bar CSS ######### */
+
+.mattblackmenu .bg_button{
+margin: 0px;
+padding:0px;
+                  }
+
+.mattblackmenu .bg_button a{
+    white-space:nowrap;
+display: block;
+         text-decoration: none;
+padding:0px 28px 0px 28px;
+height:56px;
+}
+
+.mattblackmenu .bg_button a .span{
+display:block;
+padding:21px 0px 0px 0px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:bold;
+        font-size:14px;
+color:#ffffff;
+      text-transform:uppercase;
+}
+
+.mattblackmenu .bg_button a:hover{
+        color:#ffb800;
+                text-decoration:none;
+}
+
+.mattblackmenu .bg_button a:hover .span{
+        color:#ffb800;
+}
+
+
+.mattblackmenu img {
+        border:0px;
+                vertical-align:top;
+                    padding:0px;
+                                margin:0px;
+}
+
+
+/* ######### Marker List Vertical Menu ######### */
+.markermenu{
+width: 175px; /*width of side bar menu*/
+clear: left;
+position: relative; /*Preserve this for "right" arrow images (added by script) to be positioned correctly*/
+
+                  }
+
+.markermenu ul{
+    list-style-type: none;
+margin: 5px 0;
+padding: 0;
+border: 1px solid #9A9A9A;
+}
+
+.markermenu ul li a{
+background: #F2F2F2 url(bulletlist.gif) no-repeat 3px center; /*light gray background*/
+font: bold 13px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+color: #00014e;
+display: block;
+width: auto;
+padding: 3px 0;
+         padding-left: 20px;
+         text-decoration: none;
+         border-bottom: 1px solid #B5B5B5;
+}
+
+* html .markermenu ul li a{ /*IE6 hack*/
+width: 155px;
+}
+
+.markermenu ul li a:visited, .markermenu ul li a:active{
+color: #00014e;
+}
+
+.markermenu ul li a:hover, .markermenu ul li a.selected{
+color: white;
+       background-color: black;
+}
+
+/* ######### Customized Drop Down ULs CSS (inherits from ddlevelsmenu-base.css) ######### */
+
+.blackwhite li a{
+background: white;
+}
+
+.blackwhite li a:hover{
+background: black;
+color: white;
+}
+
+* {-moz-box-sizing: border-box; -webkit-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
+body {padding:0; margin:0; background:#3a3734;}
+html, body { height:100%;}
+
+a {color:#f2a510; cursor:pointer; color:inherit; *color:#f2a510;}
+
+body, td, input, textarea{
+        font-size:12px;
+            font-family:Arial, Helvetica, sans-serif;
+                color:#535353;
+                        line-height:15px;
+}
+.middleValign {
+        vertical-align:middle;
+}
+
+
+a{ color:inherit; color:expression(this.parentNode.currentStyle['color']); cursor:pointer; outline:none; border:none;}
+
+
+strong, b { font-weight:bold; font-style: inherit;}
+em{ font-style:italic; font-weight:inherit;}
+p { margin:0px; padding:0px;}
+
+table, img{ border-collapse:collapse; }
+img { vertical-align:top;}
+a img { border:0px none; vertical-align:top;}
+
+.td_align { vertical-align:top; text-align:left;}
+
+.doubleHeaderDiv{
+        padding:12px 15px;
+}
+.clear {
+        clear:both; font-size:0px; line-height:0px; height:0px;
+}
+.doubleHeaderDivNoTop{
+        padding:12px 15px;
+}
+.blockLeftContent {
+        padding:12px 15px;
+}
+.left {
+        float:left;
+                  margin-right:10px;
+}
+.a{color:#868686; text-decoration:underline; cursor:pointer; font-weight:bold;}
+.a:hover{text-decoration:none}
+
+.content .content_top td { color:#535353; }
+.content .content_bottom td { color:#c9c8c7; }
+
+.content .content_top .b{ color:#868686;}
+.content .content_top .span{ color:#868686}
+.content .content_bottom .b{ color:#cac9c8;}
+.content .content_bottom .span{ color:#cac9c8}
+.content .page_text img { border:1px solid #474640;}
+
+.container_all ul, .container_all ol {margin:0; padding:0; list-style:none; line-height:17px}
+.container_all ul li { background:url(images/marker-1.gif) no-repeat 0 8px; padding-left:20px; color:#ffa600; font-weight:normal; line-height:20px; }
+.container_all ul li div { line-height:20px; }
+.container_all li a{color:#242a30; }
+.container_all ol li {padding-left:0px; margin-left:20px; color:#535353; font-size:12px;}
+.container_all ol { list-style:decimal;}
+
+/* .container_all { width:100%; height:100%; background-color:#fff;} */
+.container_all { width:100%; height:100%; }
+.container_all td { font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#535353; line-height:15px;}
+
+.header_templates { width:100%;}
+.header_templates .tall_menu {width:50%;}
+.header_templates .tall_header_bottom {width:50%;}
+/* .header_templates .header_bottom { width:920px; background:url(images/bg_header.jpg) no-repeat top center; vertical-align:top; } */
+.header_templates .header_bottom { vertical-align:top; }
+.header_templates .header_bottom_line { width:100%;}
+.header_templates .header_bottom_line_2 { width:920px; height:382px;}
+
+.header_templates .width_table { width:920px;}
+
+#languages_id_decor{ position:relative; }
+#languages_id_decor .dop_block{ position:absolute; top:25px; right:35px;}
+#languages_id_decor .dop_block2{ position:relative;}
+#languages_id_decor .select_arrow{ position:absolute; right:-1px; top:-1px; width:18px; height:20px; background:url(images/select_arrow.gif) no-repeat;}
+#languages_id_decor .currentSiteLanguagesSelect{ display:block !important; position:absolute; z-index:1; border:solid 1px #474640; width:100%; height:100%; height:20px; padding-left:4px; cursor:pointer; line-height:18px; color:#474640; font-weight:normal; font-size:12px;}
+#languagesSelect{ opacity:0; *filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); *filter:alpha(Opacity=0); height:20px; display:block; position:relative; z-index:2 !important; color:000;}
+
+
+.header_templates .menu { background:#474640; margin:0px; padding:0px 0px 0px 0px; }
+.header_templates .logo { margin:0px; padding:0px; width:275px; height:130px; }
+.header_templates .logo .inner_logo { padding:30px 0px 0px 30px;}
+.header_templates .company_name { margin:0px; padding:0px; float:left;}
+.header_templates .company_name .inner_company_name { padding:65px 10px 0px 50px; background:url(images/decor.gif) no-repeat 10px 65px;}
+.header_templates .slogan { margin:0px; padding:0px; padding:0px 0px 0px 50px; float:left; }
+.header_templates .slogan .inner_bottom_slogan { padding:0px; padding-top:3px; }
+
+
+.footer{ background:#3a3734; text-align:center;}
+
+.footer .inner_footer {font-size:12px; color:#eaeaea; text-align:center; width:920px; margin:10px auto;}
+.footer .inner_footer p {font-size:12px; color:#eaeaea;}
+
+#copyright .copyright_link{color:#eaeaea; font-size:12px; text-decoration:none;}
+#copyright .copyright_link span.crls{ text-decoration:underline;}
+#copyright .copyright_link:hover{text-decoration:none;}
+#copyright .copyright_link_div{ padding:5px 0;}
+
+
+.content .content_top .more {color:#28a2d0; font-weight:bold; text-decoration:underline; cursor:pointer; font-style:normal; }
+.content .content_bottom .more {color:#ffb800; font-weight:bold; text-decoration:underline; cursor:pointer; font-style:normal;}
+.backLink a {color:#28a2d0; font-weight:bold; text-decoration:underline; cursor:pointer; font-style:normal;}
+
+.content_all { height:100%; width:100%; text-align:left; vertical-align:top; }
+
+.content { width:100%;}
+.content .content_top { width:100%;  margin:0 auto; color:#535353;} 
+/* .content .content_bottom { width:100%; background:#474440; margin:0 auto; color:#c9c8c7;} */
+.content .content_bottom { width:100%; margin:0 auto; color:#c9c8c7;}
+
+.content .right_column { text-align:left; vertical-align:top; color:#c9c8c7;}
+.content .left_column { text-align:left; vertical-align:top; color:#c9c8c7;}
+.content .sub_page_collumn { vertical-align:top; text-align:left;}
+.content .left_column2 {text-align:left; vertical-align:top; color:#535353;}
+.content .right_column2 {text-align:left; vertical-align:top; color:#535353;}
+.content .splashColumn2 { text-align:left; vertical-align:top; color:#c9c8c7;}
+.content .left_column3 {text-align:left; vertical-align:top; color:#535353;}
+.content .right_column3 {text-align:left; vertical-align:top; color:#535353;}
+
+.content .page_header { font-size:20px; font-weight:bold; line-height:20px; color:#FFFFFF;}
+
+.content .top_left_column { text-align:left; vertical-align:top; color:#535353; }
+.content .top_middle_column { text-align:left; vertical-align:top; color:#535353; }
+.content .top_right_column { text-align:left; vertical-align:top; color:#535353; }
+.content .box_services_index { background-color:#1f1f1f; padding:10px 20px 10px 20px;}
+.content .image_news_index { float:left; margin-right:15px; border:1px solid #504d49; }
+
+.content .blockLeftContent .featured_products_list { float:left; margin:0px 10px 10px 0px;}
+.content .producticonstyle { border:1px solid #474640;}
+
+.content .news_news_short_text p { color:#FFFFFF;}
+.content .news_title_index { color:#FFFFFF; font-weight:bold; text-transform:uppercase; font-size:14px; height:34px; }
+.content .more_index_news { color:#FFFFFF; font-weight:bold; text-transform:uppercase; text-decoration:none; font-style:normal;}
+
+
+/*______________|paypal_product_list|______________*/
+
+.content .productIcon{ margin:0 10px 10px 0;}
+.content .paypal_product_list{}
+.content .paypal_product_list .productName h3{ padding:0; margin:0; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#535353; line-height:15px;}
+.content .paypal_product_list .productName { padding:8px 0;}
+.content .paypal_product_list .productIcon{ min-width:100px; *width:100px; margin:0 15px 0 0; text-align:center;}
+.content .paypal_product_list .productShortDescription{}
+.content .paypal_product_list td{ vertical-align:top;}
+
+.content .product_list{}
+.content .product_list .block{ margin:0 0 10px 0; padding-bottom:10px;}
+.content .product_list .text{}
+.content .product_list .picture{ float:left; width:110px; margin:0 10px 10px 0; text-align:center;}
+
+
+/* ---------------------------------------- boxes --------------------------------*/
+
+.box1 { margin:0px 5px;}
+.box1 .top_part_box1 { position:relative; width:100%; height:14px; margin-top:15px; }
+.box1 .left_top_corner { position:absolute; background:url(images/left_top_corner.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box1 .left_top_corner { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_top_corner.png', sizingMethod='crop',enabled=true); }
+
+.box1 .mid_top_corner {  padding-left:14px; padding-right:14px;  line-height:0px; font-size:0px; }
+.box1 .mid_top_corner .ineer_mid_top_corner { width:100%; height:14px; background:#28cbd0; line-height:0px; font-size:0px;}
+.box1 .right_top_corner { position:absolute; background:url(images/right_top_corner.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box1 .right_top_corner { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_top_corner.png', sizingMethod='crop',enabled=true); }
+
+.box1 .inner { background:#28cbd0; padding:0px 10px; }
+.box1 .bottom_part_box1 { position:relative; width:100%; height:14px; }
+.box1 .left_bot_corner { position:absolute; background:url(images/left_bot_corner.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box1 .left_bot_corner { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_bot_corner.png', sizingMethod='crop',enabled=true); }
+
+.box1 .mid_bot_corner { padding-left:14px; padding-right:14px; line-height:0px; font-size:0px; }
+.box1 .mid_bot_corner .ineer_mid_bot_corner { width:100%; height:14px; background:#28cbd0; line-height:0px; font-size:0px;}
+.box1 .right_bot_corner { position:absolute; background:url(images/right_bot_corner.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box1 .right_bot_corner { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_bot_corner.png', sizingMethod='crop',enabled=true); }
+
+
+.box2 { margin:0px 5px;}
+.box2 .top_part_box2 { position:relative; width:100%; height:14px; margin-top:15px; }
+.box2 .left_top_corner2 { position:absolute; background:url(images/left_top_corner2.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box2 .left_top_corner2 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_top_corner2.png', sizingMethod='crop',enabled=true); }
+
+.box2 .mid_top_corner2 {  padding-left:14px; padding-right:14px;  line-height:0px; font-size:0px; }
+.box2 .mid_top_corner2 .ineer_mid_top_corner2 { width:100%; height:14px; background:#bdd028; line-height:0px; font-size:0px;}
+.box2 .right_top_corner2 { position:absolute; background:url(images/right_top_corner2.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box2 .right_top_corner2 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_top_corner2.png', sizingMethod='crop',enabled=true); }
+
+.box2 .inner { background:#bdd028; padding:0px 10px; }
+.box2 .bottom_part_box2 { position:relative; width:100%; height:14px; }
+.box2 .left_bot_corner2 { position:absolute; background:url(images/left_bot_corner2.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box2 .left_bot_corner2 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_bot_corner2.png', sizingMethod='crop',enabled=true); }
+
+.box2 .mid_bot_corner2 { padding-left:14px; padding-right:14px; line-height:0px; font-size:0px; }
+.box2 .mid_bot_corner2 .ineer_mid_bot_corner2 { width:100%; height:14px; background:#bdd028; line-height:0px; font-size:0px;}
+.box2 .right_bot_corner2 { position:absolute; background:url(images/right_bot_corner2.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box2 .right_bot_corner2 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_bot_corner2.png', sizingMethod='crop',enabled=true); }
+
+
+.box3 { margin:0px 5px;}
+.box3 .top_part_box3 { position:relative; width:100%; height:14px; margin-top:15px; }
+.box3 .left_top_corner3 { position:absolute; background:url(images/left_top_corner3.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box3 .left_top_corner3 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_top_corner3.png', sizingMethod='crop',enabled=true); }
+
+.box3 .mid_top_corner3 {  padding-left:14px; padding-right:14px;  line-height:0px; font-size:0px; }
+.box3 .mid_top_corner3 .ineer_mid_top_corner3 { width:100%; height:14px; background:#ffc600; line-height:0px; font-size:0px;}
+.box3 .right_top_corner3 { position:absolute; background:url(images/right_top_corner3.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box3 .right_top_corner3 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_top_corner3.png', sizingMethod='crop',enabled=true); }
+
+.box3 .inner { background:#ffc600; padding:0px 10px; }
+.box3 .bottom_part_box3 { position:relative; width:100%; height:14px; }
+.box3 .left_bot_corner3 { position:absolute; background:url(images/left_bot_corner3.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box3 .left_bot_corner3 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_bot_corner3.png', sizingMethod='crop',enabled=true); }
+
+.box3 .mid_bot_corner3 { padding-left:14px; padding-right:14px; line-height:0px; font-size:0px; }
+.box3 .mid_bot_corner3 .ineer_mid_bot_corner3 { width:100%; height:14px; background:#ffc600; line-height:0px; font-size:0px;}
+.box3 .right_bot_corner3 { position:absolute; background:url(images/right_bot_corner3.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box3 .right_bot_corner3 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_bot_corner3.png', sizingMethod='crop',enabled=true); }
+
+
+.box4 { margin:0px 5px;}
+.box4 .top_part_box4 { position:relative; width:100%; height:14px; margin-top:15px; }
+.box4 .left_top_corner4 { position:absolute; background:url(images/left_top_corner4.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box4 .left_top_corner4 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_top_corner4.png', sizingMethod='crop',enabled=true); }
+
+.box4 .mid_top_corner4 {  padding-left:14px; padding-right:14px;  line-height:0px; font-size:0px; }
+.box4 .mid_top_corner4 .ineer_mid_top_corner4 { width:100%; height:14px; background:#ff7300; line-height:0px; font-size:0px;}
+.box4 .right_top_corner4 { position:absolute; background:url(images/right_top_corner4.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box4 .right_top_corner4 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_top_corner4.png', sizingMethod='crop',enabled=true); }
+
+.box4 .inner { background:#ff7300; padding:0px 10px; }
+.box4 .bottom_part_box4 { position:relative; width:100%; height:14px; }
+.box4 .left_bot_corner4 { position:absolute; background:url(images/left_bot_corner4.png) no-repeat left top; width:14px; height:14px; top:0px; left:0px; line-height:0px; font-size:0px;}
+* html .box4 .left_bot_corner4 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/left_bot_corner4.png', sizingMethod='crop',enabled=true); }
+
+.box4 .mid_bot_corner4 { padding-left:14px; padding-right:14px; line-height:0px; font-size:0px; }
+.box4 .mid_bot_corner4 .ineer_mid_bot_corner4 { width:100%; height:14px; background:#ff7300; line-height:0px; font-size:0px;}
+.box4 .right_bot_corner4 { position:absolute; background:url(images/right_bot_corner4.png) no-repeat left top; width:14px; height:14px; top:0px; right:0px; line-height:0px; font-size:0px; }
+* html .box4 .right_bot_corner4 { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/right_bot_corner4.png', sizingMethod='crop',enabled=true); }
+
+
+/*.box2 .left_top_corner2 { background:url(images/left_top_corner2.png) no-repeat left top #bdd028; margin:0px 5px;}
+  .box2 .right_top_corner2 { background:url(images/right_top_corner2.png) no-repeat right top; }
+  .box2 .left_bot_corner2 { background:url(images/left_bot_corner2.png) no-repeat left bottom;}
+  .box2 .right_bot_corner2 { background:url(images/right_bot_corner2.png) no-repeat right bottom; }
+  .box2 .inner2 { margin:15px;} */
+
+/* .box3 .left_top_corner3 { background:url(images/left_top_corner3.gif) no-repeat left top #ffc600; margin:0px 5px;}
+   .box3 .right_top_corner3 { background:url(images/right_top_corner3.gif) no-repeat right top; }
+   .box3 .left_bot_corner3 { background:url(images/left_bot_corner3.gif) no-repeat left bottom;}
+   .box3 .right_bot_corner3 { background:url(images/right_bot_corner3.gif) no-repeat right bottom; }
+   .box3 .inner3 { margin:15px;} */
+
+/*.box4 .left_top_corner4 { background:url(images/left_top_corner4.gif) no-repeat left top #ff7300; margin:0px 5px;}
+  .box4 .right_top_corner4 { background:url(images/right_top_corner4.gif) no-repeat right top; }
+  .box4 .left_bot_corner4 { background:url(images/left_bot_corner4.gif) no-repeat left bottom;}
+  .box4 .right_bot_corner4 { background:url(images/right_bot_corner4.gif) no-repeat right bottom; }
+  .box4 .inner4 { margin:15px;} */
+
+/* ---------------------------------------- boxes --------------------------------*/
+
+.content .news_date { color:#ffa600;}
+.content .index_image_top { padding:15px 0px 15px 0px; text-align:center;}
+.blockLeftContent_clients {
+        padding:0px 0px 0px 20px;
+}
+
+#input1{ 
+       width:175px; height:16px;
+                vertical-align:middle;
+                   padding-left:0px;
+                      padding-top:0px;
+}
+#input2{
+border:0px;
+          width:61px; height:16px;
+                   margin-left:5px;
+                      vertical-align:middle;
+                         padding-left:0px;
+                            padding-top:0px;
+}
+input{
+       padding-left:5px;
+          width:201px; height:20px;
+}
+textarea{
+       padding-left:5px;
+          width:201px; height:80px;
+                   overflow:auto}
+
+                   /*==============contact form styles ==============*/
+                   .contactForm input, .contactForm select, .contactForm textarea {
+                           width:100%;
+                                     height:21px;
+                                                font-size:11px;
+                   }
+
+.contactForm textarea {
+        height:150px;
+}
+.contactForm strong {
+        color:#8c8c8c;
+}
+.contactFormSubmit { color:#28a2d0; font-weight:bold; text-decoration:underline; cursor:pointer; font-style:normal; }
+/*==============contact form styles ==============*/
+
+
+/*==============reservation form styles ==============*/
+#addTestimonialForm input, #addTestimonialForm select, #addTestimonialForm textarea {
+        width:100%;
+                  height:21px;
+                             font-size:11px;
+}
+#addTestimonialForm strong {
+        color:#8c8c8c;
+}
+#addTestimonialForm textarea {
+        height:150px;
+}
+
+/*==============reservation form styles ==============*/
+
+       
+/*==============pages listing classes ==============*/
+.pages_listing {
+        text-align:center;
+            margin-top:10px;
+}
+.pages_listing .first, .pages_listing .previous {
+        margin-right:15px;
+}
+.pages_listing .last, .pages_listing .next {
+        margin-left:15px;
+}
+
+.content .content_top .pages_listing a {
+            text-decoration:underline;
+                    color:#28a2d0;
+                                cursor:pointer;
+}
+.content .content_bottom .pages_listing a {
+            text-decoration:underline;
+                    color:#ffb800;
+                                cursor:pointer;
+}
+.content .pages_listing b {
+       color:#c9c8c7;
+}
+ 
+/*==============pages listing classes ==============*/
+
+</style> 
+
+				</head>
+			<body>
+				<table class="container_all" cellpadding="0" cellspacing="0" style="background-color:#FFFFFF; ">
+    <tr>
+        <td class="td_align">
+                        <table class="header_templates" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="td_align">
+                                	<div class="menu">
+                                    	            <div id="ddtopmenubar" class="mattblackmenu">
+              
+            <table cellpadding="0" cellspacing="0" style="width:100%"><tr>
+            	<td class="tall_menu">&nbsp;</td>
+                                <td class="bg_button">
+                    </td>    
+                                        <td class="bg_button">
+                    </td>    
+                                        <td class="bg_button">
+                    </td>    
+                                        <td class="bg_button">
+                    </td>    
+                                        <td class="bg_button">
+                    </td>    
+                                        <td class="bg_button">
+                    </td>    
+                                        <td class="bg_button">
+                    </td>    
+                                	<td class="tall_menu">&nbsp;</td>
+            </tr></table>
+                        </div>
+
+                                	</div>
+                                </td>
+                            </tr>
+                        	<tr>
+                            	<td class="td_align">
+                                	<table cellpadding="0" cellspacing="0" class="header_bottom_line"><tr>
+                                        <td class="tall_header_bottom">&nbsp;</td>
+                                        <td class="header_bottom" style="background-color:; background-image:url('/images/template_design_options/bg_header.jpg'); background-position:top center; background-repeat:no-repeat; background-attachment: ;width:920px;">
+
+                                            	<div id="languages_id_decor">
+                                                    <div class="dop_block"><div class="dop_block2">
+                                                        <div class="currentSiteLanguagesSelect" style="display:none">
+	<div class="select_arrow"></div>
+	en</div>
+<select name="language" style="width:42px; height:20px" id="languagesSelect" onchange="changeLanguage()">
+					<option value="en" SELECTED>en</option>
+			</select>
+
+<script>
+	window.changeLanguage = function() {
+		selectedLanguage = document.getElementById("languagesSelect").value;
+		currentLanguage = "en";
+		if (selectedLanguage != currentLanguage) {
+			if (typeof parent.top.LinkManager != "undefined") {
+				parent.top.LinkManager.getDefaultInstance().goLocation("/index.php?language=" + selectedLanguage);
+			} else {
+				window.location = "/index.php?language=" + selectedLanguage;
+			}
+		}
+	}
+</script>                                                    </div></div>
+                                                </div>
+
+                                        	<div class="header_bottom_line_2">
+                                                    <div class="logo">
+                                                        <div class="inner_logo">
+<img src="./images/logotype/logotype_file/logo.gif" width="192px" height="73px" alt="logo.gif"   /></div>                                                    </div>
+                                                    <div class="company_name">
+                                                            <div class="inner_company_name">
+<img src="./images/company_name/e04dfd30005bbfc.png" width="381px" height="38px" alt="Business company "   /></div>                                                    </div>
+                                                    <div class="clear"></div>
+                                                    <div class="slogan">
+                                                            <div class="inner_bottom_slogan">
+    	<img src="./images/slogan/5e58de14414a82b.png" width="401px" height="38px" alt="Making bucks easily"   />    </div>
+                                                        </div>
+                                                    <div class="clear"></div>
+                                            </div>
+                                        </td>
+                                        <td class="tall_header_bottom">&nbsp;</td>
+                                	</tr></table>
+                            	</td>
+                            </tr>
+                        </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="content_all">
+            <table align="center" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                	<td class="td_align">   <table cellpadding="0" cellspacing="0" class="content"> 	
+	<tr>
+    	<td>
+    		<div class="content_top">
+                	<table cellpadding="0" cellspacing="0" style="width:100%"><tr>
+                        <td style="width:50%"></td>
+                        <td class="top_left_column" >
+                        	<div class="box1">
+	<div class="top_part_box1">
+        <div class="left_top_corner"></div>
+        <div class="mid_top_corner"><div class="ineer_mid_top_corner"></div></div>
+        <div class="right_top_corner"></div>
+    </div>
+    
+    <div class="inner">
+								<!--start content of news content -->	            	<div>
+				                                            <div class="news_title_index">The Company sponsors a Competition</div><br />
+                        <div class="page_text"><div class="news_news_short_text"><p>The Company today announced that it will sponsor the 2009 Competition among its employees and that Company's President Richard Black will serve as co-chair of this year&#8217;s competition.</p></div></div><br />
+                                                	<a href="/content/readMore1/infobox/news/template/default/active_id/1" class="more_index_news">Read more</a>
+                            
+                </div>
+                	 
+			<!--end content of news content -->                        	    </div>
+    
+    <div class="bottom_part_box1">
+        <div class="left_bot_corner"></div>
+        <div class="mid_bot_corner"><div class="ineer_mid_bot_corner"></div></div>
+        <div class="right_bot_corner"></div>
     </div>
 
-    <h1><a href="https://github.com/emigonza/XChat-FiSH-AES">XChat-FiSH-AES</a>
-      <span class="small">by <a href="https://github.com/emigonza">emigonza</a></span></h1>
-
-    <div class="description">
-      Blowfish and AES FiSH-like for X-Chat in 100% Python
+</div>                            <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:230px"  />                        </td>
+                        <td class="top_middle_column" >
+                        	<div class="box2">
+	<div class="top_part_box2">
+        <div class="left_top_corner2"></div>
+        <div class="mid_top_corner2"><div class="ineer_mid_top_corner2"></div></div>
+        <div class="right_top_corner2"></div>
+    </div>
+    
+    <div class="inner">
+								<!--start content of news content -->	            	<div>
+				                                            <div class="news_title_index">The Company Offers Loans for Developing</div><br />
+                        <div class="page_text"><div class="news_news_short_text"><p>&#171;I activated emergency procedures so the Company can respond quickly . . . to be able to answer problems that may happen in some of the emergency cases,&#8221; said the Company's President.</p></div></div><br />
+                                                	<a href="/content/readMore1/infobox/news/template/default/active_id/2" class="more_index_news">Read more</a>
+                            
+                </div>
+                	 
+			<!--end content of news content -->                        	    </div>
+    
+    <div class="bottom_part_box2">
+        <div class="left_bot_corner2"></div>
+        <div class="mid_bot_corner2"><div class="ineer_mid_bot_corner2"></div></div>
+        <div class="right_bot_corner2"></div>
     </div>
 
+</div>                            <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:230px"  />                        </td>
+                        <td class="top_middle_column" >
+                        	<div class="box3">
+	<div class="top_part_box3">
+        <div class="left_top_corner3"></div>
+        <div class="mid_top_corner3"><div class="ineer_mid_top_corner3"></div></div>
+        <div class="right_top_corner3"></div>
+    </div>
     
-
+    <div class="inner">
+								<!--start content of news content -->	            	<div>
+				                                            <div class="news_title_index">The Company Names Three to its Board</div><br />
+                        <div class="page_text"><div class="news_news_short_text"><p>The Company today announced that it has appointed three business leaders to its board of directors. At the same time a board secretary has been also appointed. &#8220;We&#8217;re delighted that John, Ronald, and ...<br /></p></div></div><br />
+                                                	<a href="/content/readMore1/infobox/news/template/default/active_id/4" class="more_index_news">Read more</a>
+                            
+                </div>
+                	 
+			<!--end content of news content -->                        	    </div>
     
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Emiliano González (egonzalez@ergio.com.ar)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Emiliano González (egonzalez@ergio.com.ar)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/emigonza/XChat-FiSH-AES/zipball/master">zip</a> or
-      <a href="https://github.com/emigonza/XChat-FiSH-AES/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/emigonza/XChat-FiSH-AES</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/emigonza/XChat-FiSH-AES">emigonza/XChat-FiSH-AES</a>
+    <div class="bottom_part_box3">
+        <div class="left_bot_corner3"></div>
+        <div class="mid_bot_corner3"><div class="ineer_mid_bot_corner3"></div></div>
+        <div class="right_bot_corner3"></div>
     </div>
 
-  </div>
+</div>                            <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:230px"  />                        </td>
+                        <td class="top_right_column" >
+                        	<div class="box4">
+	<div class="top_part_box4">
+        <div class="left_top_corner4"></div>
+        <div class="mid_top_corner4"><div class="ineer_mid_top_corner4"></div></div>
+        <div class="right_top_corner4"></div>
+    </div>
+    
+    <div class="inner">
+								<!--start content of news content -->	            	<div>
+				                                            <div class="news_title_index">Foreign Investment</div><br />
+                        <div class="page_text"><div class="news_news_short_text"><p>&#8220;They only push for foreign investment via government invitations. They are very quiet about the way they invite foreign investment to their country. They have to be &#8211; they are communist ...<br /></p></div></div><br />
+                                                	<a href="/content/readMore1/infobox/news/template/default/active_id/5" class="more_index_news">Read more</a>
+                            
+                </div>
+                	 
+			<!--end content of news content -->                        	    </div>
+    
+    <div class="bottom_part_box4">
+        <div class="left_bot_corner4"></div>
+        <div class="mid_bot_corner4"><div class="ineer_mid_bot_corner4"></div></div>
+        <div class="right_bot_corner4"></div>
+    </div>
 
+</div>                            <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:230px"  />                        </td>
+                        <td style="width:50%"></td>
+                    </tr></table>
+
+                	<table cellpadding="0" cellspacing="0" width="100%"><tr>
+                        <td style="width:50%"></td>
+                        <td class="top_left_column" >
+                            <!--start content of greeting_text content -->        <div class="doubleHeaderDiv">
+		<img src="./images/greeting_text/f4519c860292cab.png" width="169px" height="20px" alt="Welcome text "   /><br/>
+        </div>
+        <div class="blockLeftContent">
+        
+		<div class="page_text"><div><strong>Our Company is a globally</strong> operating provider of business services.</div><div>Our highly professional employees develop integrated service solutions and ideas for lasting successful business.</div>
+<p><strong><br /></strong></p>
+<p><img style="border-color: #474640; margin: 5px 10px; float: left;" title="welcome_image" src="./images/welcome_image.jpg" alt="welcome_image" width="130" height="112" border="1" /><strong>The Company</strong> is always there to provide any help and valuable advice our customer may need. We treat our customers as possessing partners, so they decide how extensive our services should be.</p>
+
+<p><strong>The purpose of our Company</strong> is to provide our customers with the best services in the field, while ensuring good values and ...</p></div>
+        </div>
+                                    <div class="blockLeftContent">
+                            <a href="/content/readMore1/infobox/greeting_text/template/default/active_id/2"  class="more">Read more</a>
+                            </div>
+                            <!--end content of greeting_text content -->                            <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:306px"  />                        </td>
+                        <td class="top_middle_column" >
+                            <!--start content of company_profile content -->        <div class="doubleHeaderDiv">
+		<img src="./images/company_profile/fb458b56152bac5.png" width="188px" height="24px" alt="Company profile"   /><br/>
+        <img src="./images/company_profile/90e33deae2ad579.png" width="195px" height="20px" alt="Products, services, facilities"   />        </div>
+        <div class="blockLeftContent">
+        
+		<div style="text-align: center;"><img style="margin: 0px 10px;" title="history1" src="./images/history1.jpg" alt="history1" /></div><div>&nbsp;</div>
+<p>Our business company provides innovative and<strong> breakthrough solutions</strong> for global companies. Our mission is to offer a broad range of services based in state of the art technologies, to help our clients succeed in the new business world.</p>
+<p><strong>We develop integrated Business solutions</strong> that allow our customers to leverage emerging technologies and ...<br /></p>        </div>
+		                <div class="blockLeftContent">
+                <a class="more" href="/content/readMore1/infobox/company_profile/template/default/active_id/2">Read more</a>
+                </div>
+				<div class="clear"></div><!--end content of company_profile content -->                            <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:306px"  />                        </td>
+                        <td class="top_right_column" >
+                            <!--start content of featured_solution content -->        <div class="doubleHeaderDiv">
+		<img src="./images/featured_solution/802e3a6fa255589.png" width="220px" height="25px" alt="Enterprise solution"   /><br/>
+        <img src="./images/featured_solution/ba854ff6811c461.png" width="193px" height="20px" alt="Visualization and Reporting"   />        </div>
+        <div class="blockLeftContent">
+        
+		<div class="page_text"><div align="center"><img title="featured_solution" src="./images/featured_solution.jpg" alt="featured_solution" width="170" height="129" /></div>
+<div>&nbsp;</div>
+<p><strong>Managers everywhere</strong> are concerned about reducing costs, improving efficiency, and helping employees make well-informed decisions.<strong>The Visualization and Reporting package</strong> from our Company addresses these crucial issues by providing a consolidated and reliable overview of your business that increases the reach of your business intelligence. <br /></p></div>
+        </div>
+		            <div class="blockLeftContent">
+			<a class="more" href="/content/readMore1/infobox/featured_solution/template/default/active_id/2">Read more</a>
+            </div>
+			<!--end content of featured_solution content -->                            <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:306px"  />                        </td>
+                        <td style="width:50%"></td>
+                    </tr></table>
+             </div>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+        	<table cellpadding="0" cellspacing="0" class="content_bottom" style="background-color:#474440; "><tr>
+            	<td style="width:50%"></td>
+                <td class="left_column" >
+                    <!--start content of featured_products_list content --><div class="doubleHeaderDiv">
+    <img src="./images/featured_products_list/main_header_en.png" width="251px" height="25px" alt="Featured product title"   /></div>
+        	<div class="blockLeftContent" style="width:100%;">
+				            
+                    <div style="float:left; margin-right:15px; margin-bottom:5px;">
+                        <img src="./images/featured_products_list/icon-5.gif" width="76px" height="77px" alt="icon-5.gif"   />                    </div>
+                        <div>
+                           <b class="b">Maintenance and Management</b><br />
+                           <div class="page_text"><div>Here the focus is on keeping your network business proactively maintained to minimise downtime.</div><div>We offer a range of professional services designed to assist with and support a planned migration to a new business infrastructure, including <span underline;&quot;="&quot;&quot;&quot;&quot;">24x7 proactive monitoring and management of the network</span>.</div></div>
+                        </div>
+                    <div class="clear"></div>
+                                                    <div align="right"><a href="/content/readMore1/infobox/featured_products_list/template/default/active_id/2"  class="more">Read more</a></div>
+                                        </div>
+		            	<div class="blockLeftContent" style="width:100%;">
+				            
+                    <div style="float:left; margin-right:15px; margin-bottom:5px;">
+                        <img src="./images/featured_products_list/icon-6.gif" width="76px" height="77px" alt="icon-6.gif"   />                    </div>
+                        <div>
+                           <b class="b">Monitoring</b><br />
+                           <div class="page_text"><div>Many businesses need robust monitoring to ensure security, and <span underline;&quot;="&quot;&quot;">we&#8217;re highly experienced in this area</span>, working with local boroughs, councils and businesses across the Country.</div><div>Our monitoring solutions <strong>transform the way surveillance is accessed</strong>, controlled and stored, providing a much more flexible and powerful security solution.</div></div>
+                        </div>
+                    <div class="clear"></div>
+                                                    <div align="right"><a href="/content/readMore1/infobox/featured_products_list/template/default/active_id/3"  class="more">Read more</a></div>
+                                        </div>
+		    		<!--end content of featured_products_list content -->                    <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:610px"  />                </td>
+                <td  class="right_column" >
+                    <!--start content of advantages content -->        <div class="doubleHeaderDiv">
+			<div><img src="./images/advantages/eeacda0ddabc880.png" width="183px" height="25px" alt="Our advantages"   /></div>
+            <div><img src="./images/advantages/0a43b894beec450.png" width="190px" height="20px" alt="simple principles of service"   /></div>
+        </div>
+        <div class="blockLeftContent">
+        
+			<div align="center"><img style="margin-left: 10px; margin-right: 10px;" title="our_advantages" src="./images/our_advantages.jpg" alt="our_advantages" width="166" align="baseline" height="90" /></div>
+<p>&nbsp;</p>
+<p><strong>No matter the size of your business</strong>, our Company understands that it should run at maximum efficience. Needless to say, that we have everything for that. Our team is able to develop any network solutions that will increase productivity and save you millions.<br />
+</p>        </div>
+		        
+		                <div class="blockLeftContent">
+                <a class="more" href="/content/readMore1/infobox/advantages/template/default/active_id/2">Read more</a>
+                </div>
+			<div class="clear"></div><!--end content of advantages content -->                    <img src="./e-admin/images/spacer.gif" width="1px" height="1px" alt="spacer picture" style="height:1px; width:310px"  />                </td>
+                <td style="width:50%"></td>
+    		</tr></table>
+        </td>
+    </tr> 
+</table>                	</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+    	<td class="footer">
+                <table class="inner_footer" cellpadding="0" cellspacing="0">
+                    <tr>
+                       	<td>
+<div id="copyright">
+
+</div>
+                    </td>
+                </tr>
+            </table>
+    	</td>
+    </tr>        
+</table>
 </body>
 </html>

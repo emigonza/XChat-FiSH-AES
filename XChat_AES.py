@@ -17,7 +17,7 @@
 from __future__ import with_statement
 
 __author__ = "Emiliano Gonzalez <egonzalez@ergio.com.ar>"
-__date__ = "2011-10-30"
+__date__ = "2011-12-07"
 __version__ = "1.0"
 
 ###################
@@ -239,7 +239,6 @@ def blowcrypt_unpack(msg, cipher):
 def aes_cbc_pack(msg, cipher):
     """."""
     b64_string = binascii.b2a_base64(cipher.encrypt(padto(msg, 16)))
-    b64_string += "=" * ((4 - len(b64_string) % 4) % 4)
     return '+AES *' + b64_string
 
 def aes_cbc_unpack(msg, cipher):
@@ -248,13 +247,12 @@ def aes_cbc_unpack(msg, cipher):
         raise ValueError
     try:
         _, coded = msg.split('*', 1)
-        coded += "=" * ((4 - len(coded) % 4) % 4)
+        coded += "=" * (4 - (len(coded) % 4))
         raw = binascii.a2b_base64(coded)
     except TypeError:
         raise MalformedError
     if not raw:
         raise MalformedError
-
     try:
         padded = cipher.decrypt(raw)
     except ValueError:
@@ -617,16 +615,25 @@ def encrypt_privmsg(word, word_eol, userdata):
         if (key.aes or message.startswith(AES_MARKER)) and not message.startswith(BFS_MARKER):
             if message.startswith(AES_MARKER):
                 message=message[len(AES_MARKER)+1:]
-            cipher = encrypt(key, message,'aes')
-            xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
-            xchat.emit_print('Your Message', xchat.get_info('nick')+" +", message)
+            while (len(message)>0):
+                messageSplit=""
+                if (len(message)>200):
+                    messageSplit=message[200:]
+                cipher = encrypt(key, message[0:200],'aes')
+                xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
+                xchat.emit_print('Your Message', xchat.get_info('nick')+" +", message)
+                message=messageSplit
             return xchat.EAT_ALL
         if not key.aes or message.startswith(BFS_MARKER):
             if message.startswith(BFS_MARKER):
                 message=message[len(BFS_MARKER)+1:]
-            cipher = encrypt(key, message,'bfs')
-            xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
-            xchat.emit_print('Your Message', xchat.get_info('nick')+" -", message)
+            while (len(message)>0):
+                messageSplit=""
+                if (len(message)>200):
+                    messageSplit=message[200:]
+                cipher = encrypt(key, message,'bfs')
+                xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
+                xchat.emit_print('Your Message', xchat.get_info('nick')+" -", message)
             return xchat.EAT_ALL
 
 def key(word, word_eol, userdata):

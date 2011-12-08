@@ -13,10 +13,10 @@ Changelog:
 DESCRIPTION:
     Based on the original - de facto standard - FiSH encription for IRC: http://fish.secure.la/
     This version add some features that make original system more secure.
-	- At close or unload plugin, the passwords are saved ONLY if is setted a key file password.
+        - At close or unload plugin, the passwords are saved ONLY if is setted a key file password.
         - Messages are automatically unencripted in all modes.
         - Nicks ends in:
-	        + : messg in AES256CBC
+            + : messg in AES256CBC
             - : messg in Blowfish
             ! : messg not encripted
          - Messages can be sended using any mode with prefixes:

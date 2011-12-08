@@ -76,16 +76,16 @@ def bytes2int(b):
 
 
 # FIXME! Only usable for really small a with b near 16^x.
-def randint(a, b):
-    """Random integer in [a,b]."""
-    bits = int(log(b, 2) + 1) / 8
-    candidate = 0
-    while True:
-        candidate = bytes2int(urandom(bits))
-        if a <= candidate <= b:
-            break
-    assert a <= candidate <= b
-    return candidate
+#def randint(a, b):
+#    """Random integer in [a,b]."""
+#    bits = int(log(b, 2) + 1) / 8
+##    candidate = 0
+#    while True:
+#        candidate = bytes2int(urandom(bits))
+#        if a <= candidate <= b:
+#            break
+#    assert a <= candidate <= b
+#    return candidate
 
 
 def padto(msg, length):
@@ -428,7 +428,6 @@ def dh1080_unpack(msg, ctx):
             raise MalformedError
         ctx.state = 1
         try:
-            #cmd, public_raw = msg.split(' ', 1)
             public_raw = msg[msg.index(' ')+1:]
             public = bytes2int(dh1080_b64decode(public_raw))
 
@@ -447,7 +446,6 @@ def dh1080_unpack(msg, ctx):
             raise MalformedError
         ctx.state = 1
         try:
-            #cmd, public_raw = msg.split(' ', 1)
             public_raw = msg[msg.index(' ')+1:]
             public = bytes2int(dh1080_b64decode(public_raw))
 
@@ -482,9 +480,7 @@ LINELEN=200
 class KeyMap(dict):
     def __get_real_key(self, key):
         nick, server = (key[0], key[1].lower())
-        # get all the keys for nick
         same_nick_keys = [k[1] for k in self.iterkeys() if k[0] == nick]
-        # sort by network mask's length
         same_nick_keys.sort(key=lambda k: len(k), reverse=True)
         for k in same_nick_keys:
             if server.rfind(k) >= 0:
@@ -492,9 +488,6 @@ class KeyMap(dict):
 
     def __getitem__(self, key):
         return dict.__getitem__(self, self.__get_real_key(key))
-
-        #def __setitem__(self, key, value):
-        #	return dict.__setitem__(self, self.__get_real_key(key), value)
 
     def __contains__(self, key):
         return dict.__contains__(self, self.__get_real_key(key))
@@ -581,7 +574,6 @@ def decrypt_print(word, word_eol, userdata):
         if id_ not in KEY_MAP:
             return xchat.EAT_NONE
         speaker, message = word[0], word_eol[1]
-        # if there is mode char, remove it from the message
         if len(word_eol) >= 3:
             message = message[ : -(len(word_eol[2]) + 1)]
         if message.startswith('+AES '):
@@ -684,7 +676,6 @@ def dh1080_finish(word, word_eol, userdata):
 
 def dh1080_init(word, word_eol, userdata):
             ctx = xchat.get_context()
-            #speaker, command, target, message = word[0], word[1], word[2], word_eol[3]
             speaker, message = word[0], word_eol[3]
             id_ = get_id_for(ctx, speaker)
             key = SecretKey(None)
@@ -715,7 +706,6 @@ def key_pass(word, word_eol, userdata):
 
 def key_load(word, word_eol, userdata):
             global KEY_MAP
-            # KEYPASS=sha256(word[0])
             try:
                 with open(os.path.join(xchat.get_info('xchatdir'),
                 'XChatAES.pickle'), 'rb') as f:
@@ -743,7 +733,6 @@ def key_remove(word, word_eol, userdata):
                 print 'Key removed'
             return xchat.EAT_ALL
 
-        # handle topic line
 def server_332(word, word_eol, userdata):
             if is_processing():
                 return xchat.EAT_NONE

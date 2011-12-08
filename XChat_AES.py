@@ -474,8 +474,8 @@ def dh1080_secret(ctx):
 ###############################
 
 PLAINTEXT_MARKER = '+p '
-AES_MARKER = '+aes'
-BFS_MARKER = '+bfs'
+AES_MARKER = '+a'
+BFS_MARKER = '+b'
 KEYPASS= ''
 
 class KeyMap(dict):
@@ -609,8 +609,13 @@ def encrypt_privmsg(word, word_eol, userdata):
         if not key.key or message.startswith(PLAINTEXT_MARKER):
             if message.startswith(PLAINTEXT_MARKER):
                 message=message[len(PLAINTEXT_MARKER):]
-            xchat.command('PRIVMSG %s :%s' % (id_[0], message))
-            xchat.emit_print('Your Message', xchat.get_info('nick')+" !", message)
+            while (len(message)>0):
+                messageSplit=""
+                if (len(message)>200):
+                    messageSplit=message[200:]                   
+                xchat.command('PRIVMSG %s :%s' % (id_[0], message))
+                xchat.emit_print('Your Message', xchat.get_info('nick')+" !", message)
+                message=messageSplit
             return xchat.EAT_ALL
         if (key.aes or message.startswith(AES_MARKER)) and not message.startswith(BFS_MARKER):
             if message.startswith(AES_MARKER):

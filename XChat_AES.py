@@ -473,7 +473,7 @@ def dh1080_secret(ctx):
 
 ###############################
 
-PLAINTEXT_MARKER = '+p '
+PLAINTEXT_MARKER = '+p'
 AES_MARKER = '+a'
 BFS_MARKER = '+b'
 KEYPASS= ''
@@ -560,16 +560,18 @@ def decrypt(key, inp, mode):
             b = decrypt_clz(key.key)
         return decrypt_func(inp, b)
 
-def encrypt(key, inp, mode):
-        if mode == 'aes':
+def encrypt(key, inp, mode):        
+        if mode == '+':
             encrypt_clz = AESCBC
             encrypt_func = aes_cbc_pack
             b = encrypt_clz(key.hashKey)
-        if mode =='bfs':
+            return encrypt_func(inp, b)
+        if mode == '-':
             encrypt_clz = Blowfish
             encrypt_func = blowcrypt_pack
             b = encrypt_clz(key.key)
-        return encrypt_func(inp, b)
+            return encrypt_func(inp, b)
+        return inp
 
 def decrypt_print(word, word_eol, userdata):
         if is_processing():
@@ -608,40 +610,27 @@ def encrypt_privmsg(word, word_eol, userdata):
             return xchat.EAT_NONE
         key = KEY_MAP[id_]
         if not key.key or message.startswith(PLAINTEXT_MARKER):
+            cipherMode='!'
             if message.startswith(PLAINTEXT_MARKER):
-                message=message[len(PLAINTEXT_MARKER):]
-            while (len(message)>0):
-                messageSplit=""
-                if (len(message)>LINELEN):
-                    messageSplit=message[LINELEN:]                   
-                xchat.command('PRIVMSG %s :%s' % (id_[0], message))
-                xchat.emit_print('Your Message', xchat.get_info('nick')+" !", message)
-                message=messageSplit
-            return xchat.EAT_ALL
-        if (key.aes or message.startswith(AES_MARKER)) and not message.startswith(BFS_MARKER):
-            if message.startswith(AES_MARKER):
-                message=message[len(AES_MARKER)+1:]
-            while (len(message)>0):
-                messageSplit=""
-                if (len(message)>LINELEN):
-                    messageSplit=message[LINELEN:]
-                cipher = encrypt(key, message[0:LINELEN],'aes')
-                xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
-                xchat.emit_print('Your Message', xchat.get_info('nick')+" +", message)
-                message=messageSplit
-            return xchat.EAT_ALL
-        if not key.aes or message.startswith(BFS_MARKER):
-            if message.startswith(BFS_MARKER):
-                message=message[len(BFS_MARKER)+1:]
-            while (len(message)>0):
-                messageSplit=""
-                if (len(message)>LINELEN):
-                    messageSplit=message[LINELEN:]
-                cipher = encrypt(key, message,'bfs')
-                xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
-                xchat.emit_print('Your Message', xchat.get_info('nick')+" -", message)
-                message=messageSplit
-            return xchat.EAT_ALL
+                message=message[len(PLAINTEXT_MARKER)+1:]
+        else:
+            if (key.aes or message.startswith(AES_MARKER)) and not message.startswith(BFS_MARKER):
+                cipherMode='+'
+                if message.startswith(AES_MARKER):
+                    message=message[len(AES_MARKER)+1:]
+            else:
+                cipherMode='-'
+                if message.startswith(BFS_MARKER):
+                    message=message[len(BFS_MARKER)+1:]
+        while (len(message)>0):
+            messageSplit=""
+            if (len(message)>LINELEN):
+                messageSplit=message[LINELEN:]                   
+            cipher = encrypt(key, message[0:LINELEN],cipherMode)
+            xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
+            xchat.emit_print('Your Message', xchat.get_info('nick')+" "+cipherMode, message)
+            message=messageSplit
+        return xchat.EAT_ALL
 
 def key(word, word_eol, userdata):
         ctx = xchat.get_context()

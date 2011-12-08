@@ -477,6 +477,7 @@ PLAINTEXT_MARKER = '+p '
 AES_MARKER = '+a'
 BFS_MARKER = '+b'
 KEYPASS= ''
+LINELEN=200
 
 class KeyMap(dict):
     def __get_real_key(self, key):
@@ -611,8 +612,8 @@ def encrypt_privmsg(word, word_eol, userdata):
                 message=message[len(PLAINTEXT_MARKER):]
             while (len(message)>0):
                 messageSplit=""
-                if (len(message)>200):
-                    messageSplit=message[200:]                   
+                if (len(message)>LINELEN):
+                    messageSplit=message[LINELEN:]                   
                 xchat.command('PRIVMSG %s :%s' % (id_[0], message))
                 xchat.emit_print('Your Message', xchat.get_info('nick')+" !", message)
                 message=messageSplit
@@ -622,9 +623,9 @@ def encrypt_privmsg(word, word_eol, userdata):
                 message=message[len(AES_MARKER)+1:]
             while (len(message)>0):
                 messageSplit=""
-                if (len(message)>200):
-                    messageSplit=message[200:]
-                cipher = encrypt(key, message[0:200],'aes')
+                if (len(message)>LINELEN):
+                    messageSplit=message[LINELEN:]
+                cipher = encrypt(key, message[0:LINELEN],'aes')
                 xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
                 xchat.emit_print('Your Message', xchat.get_info('nick')+" +", message)
                 message=messageSplit
@@ -634,8 +635,8 @@ def encrypt_privmsg(word, word_eol, userdata):
                 message=message[len(BFS_MARKER)+1:]
             while (len(message)>0):
                 messageSplit=""
-                if (len(message)>200):
-                    messageSplit=message[200:]
+                if (len(message)>LINELEN):
+                    messageSplit=message[LINELEN:]
                 cipher = encrypt(key, message,'bfs')
                 xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
                 xchat.emit_print('Your Message', xchat.get_info('nick')+" -", message)

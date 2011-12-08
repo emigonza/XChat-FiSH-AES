@@ -2,7 +2,7 @@ Blowfish and AES FiSH like for X-Chat in 100% Python
 
 Requirements: PyCrypto, and Python 2.5+
 
-Copyright 2011 Emiliano Gonzalez http://www.ergio.com.ar
+Copyright 2011 Emiliano A. Gonzalez http://www.ergio.com.ar
 Based in works of Nam T. Nguyen (FiSH clone) and Bjorn Edstrom (cryptographic methods for IRC)
 Released under GPLV3 license
 
@@ -11,18 +11,18 @@ Changelog:
         + Initial release AES256CBC from PyCrypto
 
 DESCRIPTION:
-    Based on the original - de facto standard - FiSH encription for IRC: http://fish.secure.la/
+    Based on the original - de facto standard - FiSH encryption for IRC: http://fish.secure.la/
     This version add some features that make original system more secure.
         - At close or unload plugin, the passwords are saved ONLY if is setted a key file password.
-        - Messages are automatically unencripted in all modes.
-        - Nicks ends in:
-            + : messg in AES256CBC
-            - : messg in Blowfish
-            ! : messg not encripted
+        - Messages are automatically unencrypted in all modes.
+        - Nicks ends in when messages are:
+            +   : AES256CBC
+            -   : Blowfish
+            !   : not encrypted
          - Messages can be sended using any mode with prefixes:
-            +p   : not encripted
-            +a   : messg in AES256CBC
-            +b   : messg in Blowfish
+            +p  : not encrypted
+            +a  : AES256CBC
+            +b  : Blowfish
 
 COMMANDS:
     /key <nick|#channel> [<--network> <network>] [new_key] : show information or set key

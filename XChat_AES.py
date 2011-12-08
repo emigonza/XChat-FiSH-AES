@@ -239,14 +239,14 @@ def blowcrypt_unpack(msg, cipher):
 def aes_cbc_pack(msg, cipher):
     """."""
     b64_string = binascii.b2a_base64(cipher.encrypt(padto(msg, 16)))
-    return '+AES *' + b64_string
+    return '+AES ' + b64_string
 
 def aes_cbc_unpack(msg, cipher):
     """."""
-    if not msg.startswith('+AES *'):
+    if not msg.startswith('+AES '):
         raise ValueError
     try:
-        _, coded = msg.split('*', 1)
+        _, coded = msg.split(' ', 1)
         coded += "=" * (4 - (len(coded) % 4))
         raw = binascii.a2b_base64(coded)
     except TypeError:
@@ -634,6 +634,7 @@ def encrypt_privmsg(word, word_eol, userdata):
                 cipher = encrypt(key, message,'bfs')
                 xchat.command('PRIVMSG %s :%s' % (id_[0], cipher))
                 xchat.emit_print('Your Message', xchat.get_info('nick')+" -", message)
+                message=messageSplit
             return xchat.EAT_ALL
 
 def key(word, word_eol, userdata):

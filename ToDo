@@ -1,3 +1,2 @@
 - Save passwords in encrypted form (partially implemented)
 - Check commands syntax
-- An All-in-One version without external dependencies (ex: PyCrypt)

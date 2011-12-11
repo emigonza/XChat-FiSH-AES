@@ -1,8 +1,8 @@
 ###
 #
-# Blowfish and AES FiSH like for X-Chat in 100% Python
+# All cryptographic rutines  embedded Blowfish and AES FiSH like for X-Chat in 100% Python
 #
-# Requirements: PyCrypto, and Python 2.5+
+# Requirements: Python 2.5+
 #
 # Copyright 2011 Emiliano Gonzalez http://www.ergio.com.ar
 # Based in works of Nam T. Nguyen (FiSH clone) and Bjorn Edstrom (cryptographic methods for IRC)
@@ -10,20 +10,20 @@
 #
 # Changelog:
 #
-#   * 1.0:
-#      + Initial release AES256 from PyCrypto
+#   * 1.0.1:
+#      + Initial release AES256 and Blowfish from embedded
 ###
 
 from __future__ import with_statement
 
 __author__ = "Emiliano Gonzalez <egonzalez@ergio.com.ar>"
 __date__ = "2011-12-07"
-__version__ = "1.0"
+__version__ = "1.0.1"
 
 ###################
 
 __module_name__ = 'FiSH_AES'
-__module_version__ = '2.0'
+__module_version__ = '1.0.1'
 __module_description__ = 'FiSH with Blowfish/AES encryption for XChat in pure python'
 
 import pickle
@@ -33,6 +33,10 @@ import hashlib
 import struct
 
 from math import log
+
+import aes
+import blowfish
+
 try:
     import Crypto.Cipher.Blowfish
     import Crypto.Cipher.AES

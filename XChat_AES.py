@@ -500,7 +500,7 @@ class SecretKey(object):
         self.dh = dh
         self.key = key
         self.hashKey = ""
-        self.aes = True
+        self.aes = False
 
 def set_processing():
         id_ = xchat.get_info('server')
